@@ -19,9 +19,9 @@ main(int argc, char *argv[])
   struct stat fileStat;
   stat(argv[1],&fileStat);
   int len=fileStat.st_size;
-  if ((S_ISDIR(fileStat.st_mode))) {directory=true;} else {directory=false;}        //controlla se è una directory
-  if ((fileStat.st_mode & S_IRUSR)>0)  {r=true;} else {r=false;}                    //controlla se è accessibile in lettura
-  if ((fileStat.st_mode & S_IWUSR)>0) {w=true;} else {w=false;}                     //controlla se è accessibile in scrittura
+  if ((S_ISDIR(fileStat.st_mode))) {directory=true;} else {directory=false;}        //check if it's a folder
+  if ((fileStat.st_mode & S_IRUSR)>0)  {r=true;} else {r=false;}                    //check if it's accessible on reading
+  if ((fileStat.st_mode & S_IWUSR)>0) {w=true;} else {w=false;}                     //check if it's accessible on writing
   /* il file 1 non è accessibile */
   if (!((!(directory))&& r && w))
     { char *re;
@@ -33,60 +33,60 @@ main(int argc, char *argv[])
     }
     int ii;
     int appoggio[70000];
-    FILE *file = fopen(argv[1],"rb");                                               //puntatore al file.bin_in in lettura
+    FILE *file = fopen(argv[1],"rb");                                               //pointer to file.bin_in on reading
     int c;
     int contatore=0;
     int flag=1;
     int index1=0;
-    while(contatore<len)                                                            //finché contatore è minore della lunghezza del file
+    while(contatore<len)                                                            //until contatore is less than file length
     {
-      c = fgetc(file);                                                              //c = primo carattere disponibile nel file
+      c = fgetc(file);                                                              //c = first available character in the file
       contatore++;
       for (ii = 0; ii < 8; ii++)
       {
-          if (flag==1)                                                              //se devo scartare i primi 4 bit
+          if (flag==1)                                                              //if I haven't to take first 4 bits
             {
-              if (ii==0 || ii==1 || ii==2 || ii==3)                                 //se sono diversi da 0 va in errore
+              if (ii==0 || ii==1 || ii==2 || ii==3)                                 //if they aren't equal to 0
               {
                 if ((!!((c<<ii) & 0x80)) != 0)
                 {fprintf(stderr,"Wrong format for input binary file %s at byte %d\n",argv[1],contatore-1);
                 fclose(file); FILE *out= fopen(argv[2],"ab+");
-                if(out == NULL)                                                     //se il file di output non esiste crealo
+                if(out == NULL)                                                     //if the output file doesn't exist, create it
                 {freopen(argv[2], "ab+", out);}fclose(out);exit(30);
                 }
               }
-              else if (ii==4 || ii==5 || ii==6 || ii==7)                            //questi invece li salvo in un array appoggio
+              else if (ii==4 || ii==5 || ii==6 || ii==7)                            //instead those I store them in an array appoggio
               {
                 int app=!!((c<<ii) & 0x80);
                 appoggio[index1]=app;
-                index1++;                                                           //index1= indice dell'array appoggio
+                index1++;                                                           //index1 = array appoggio index
               }
             }
-          if (flag==2)                                                              //se devo scartare i secondi 4 bit
+          if (flag==2)                                                              //if I haven't to take second 4 bits
             {
-              if (ii==4 || ii==5 || ii==6 || ii==7)                                 //se sono diversi da 0 va in errore
+              if (ii==4 || ii==5 || ii==6 || ii==7)                                 //if they aren't equal to 0
               {
                 if ((!!((c<<ii) & 0x80)) != 0)
                   {fprintf(stderr,"Wrong format for input binary file %s at byte %d\n",argv[1],contatore-1);
                   fclose(file); FILE *out= fopen(argv[2],"ab+");
-                  if(out == NULL)                                                   //se il file di output non esiste, crealo
+                  if(out == NULL)                                                   //if the output file doesn't exist, create it
                   {freopen(argv[2], "ab+", out);}fclose(out);exit(30);
                   }
               }
-              else if (ii==0 || ii==1 || ii==2 || ii==3)                            //questi invece li salvo in un array appoggio
+              else if (ii==0 || ii==1 || ii==2 || ii==3)                            //instead those I store them in an array appogg
                 {
                   int app=!!((c<<ii) & 0x80);
                   appoggio[index1]=app;
                   index1++;
                 }
             }
-          if (flag==1 && ii==7) {flag=2;}                                           //scambio di flag quando finisce un byte
+          if (flag==1 && ii==7) {flag=2;}                                           //flag change when It 
           else {
                   if (flag==2 && ii==7) {flag=1;}
                }
       }
     }
-    fclose(file);                                                                   // libera puntatore file input
+    fclose(file);                                                                   // clean file input pointer
     char appoggio2[index1];
     unsigned char appoggio3;
     int index2=0;
@@ -98,39 +98,39 @@ main(int argc, char *argv[])
                         appoggio[index2+2]<<5 |
                         appoggio[index2+3]<<4 |
                         appoggio[index2+4]<<3 |
-                        appoggio[index2+5]<<2 |                                     //RICOMPATTA I BIT IN CARATTERI
+                        appoggio[index2+5]<<2 |                                     //REGROUP THE BITS INTO CHARACTERS
                         appoggio[index2+6]<<1 |
                         appoggio[index2+7]<<0;
             appoggio2[iii]=appoggio3;
             iii++;
             index2=index2+8;
       }
-    FILE *fp = fopen("temp.bin", "ab");                                             // fp=puntatore ad un file temporaneo
-    fwrite(appoggio2,1,iii,fp);                                                     // scrivi appoggio2 nel file temporaneo
-    fclose(fp);                                                                     // libera puntatore file temporaneo
+    FILE *fp = fopen("temp.bin", "ab");                                             // fp = temporary file pointer
+    fwrite(appoggio2,1,iii,fp);                                                     // write appoggio2 into the temp file
+    fclose(fp);                                                                     // clean temp file
    /*SED*/
-   char sedb[6000];                                                                 // sedb = stringa finale
+   char sedb[6000];                                                                 // sedb = final string
    int cont=0;
    int filedes[2];
    pipe(filedes);
    pid_t id_figlio = fork();
    if ( id_figlio == 0)
    {
-     dup2(filedes[1],STDOUT_FILENO);                                                 // se sono il figlio duplico lo stdout sul file descriptor
+     dup2(filedes[1],STDOUT_FILENO);                                                 // if I am the child, I duplicate the stdout on the file descriptor
      close(filedes[0]);
      close(filedes[1]);
-     execl("/bin/sed","sed","-e",argv[3],"temp.bin",NULL);                           //eseguo sed
+     execl("/bin/sed","sed","-e",argv[3],"temp.bin",NULL);                           //execute sed
    }
    else
    {
      close(filedes[1]);
-     wait(NULL);                                                                      // sincronizzo i processi
+     wait(NULL);                                                                      // processes sync.
      int num=0;
      while(true)
      {
        char temp[1];
        int byte=read(filedes[0],temp,1);
-       if (byte<1) {break;}                                                           // salvo carattere per carattere il risultato in sedb
+       if (byte<1) {break;}                                                           // Storing the result in sed
        sedb[num]=temp[0];
        num++;
        cont++;
@@ -142,7 +142,7 @@ main(int argc, char *argv[])
      int char_sed_off=0;
      int indice_offuscato=0;
      while (indice_sed<cont)
-     {                                                                                //primi quattro bit per offuscamento
+     {                                                                                //First 8 bits for obfuscation
        offuscato[indice_offuscato]=0;
        offuscato[indice_offuscato+1]=0;
        offuscato[indice_offuscato+2]=0;
@@ -171,7 +171,7 @@ main(int argc, char *argv[])
      unsigned char appoggio4;
      char offuscamento[char_sed_off];
      while(ind_sed<char_sed_off)
-     {                                                                                // offuscamento finale
+     {                                                                                // final obfuscation
        appoggio4 = offuscato[ind_off]<<7 |
                    offuscato[ind_off+1]<<6 |
                    offuscato[ind_off+2]<<5 |
@@ -185,9 +185,9 @@ main(int argc, char *argv[])
        ind_off=ind_off+8;
      }
      FILE *out;
-    out = fopen(argv[2],"ab+");                                                        // se non esiste il file.bin_out, crealo.
-    if(out == NULL)                                                                    // poi scrivi il risultato offuscato nel file di output
-    {                                                                                  // libera il puntatore di output e rimuovi il file temporaneo.
+    out = fopen(argv[2],"ab+");                                                        // if the file.bin_out doesn't exist, create it
+    if(out == NULL)                                                                    // then write the obfuscated result in the output file
+    {                                                                                  // clean the output pointer and remove the temporary file
         freopen(argv[2], "ab+", out);
     }
      fwrite(offuscamento,1,ind_sed,out);
