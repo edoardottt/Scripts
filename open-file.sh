@@ -1,4 +1,4 @@
-echo "Enter extension: "
+echo -n "Enter extension: "
 read extension
 echo ---------------STARTED-----------------
 
