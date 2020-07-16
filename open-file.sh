@@ -1,12 +1,14 @@
+echo "Enter extension: "
+read extension
 echo ---------------STARTED-----------------
 
 
 for dir in $(find . -type f)
 do
-	extension="${dir##*.}"
-	if [[ $extension == "js" ]]; then
+	ext="${dir##*.}"
+	if [[ $ext == $extension ]]; then
 		code $dir
-		echo $dir OPENED
+		echo $dir OPENED 
 	fi
 done
 
