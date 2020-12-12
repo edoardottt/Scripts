@@ -8,6 +8,11 @@ My useful scripts
     - Git pull on all subfolders.
     - `wget https://raw.githubusercontent.com/edoardottt/Scripts/master/pull-all.sh`
 
+- [open-file.sh](https://github.com/edoardottt/Scripts/master/open-file.sh)
+
+    - Open all files with the inputted extension
+    - `wget https://raw.githubusercontent.com/edoardottt/Scripts/master/open-file.sh`
+
 If you want to contribute with some useful scripts, just open an issue or submit a pull request.
 
 
