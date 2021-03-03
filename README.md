@@ -13,11 +13,12 @@ My useful scripts
     - Open all files with the inputted extension
     - `wget https://raw.githubusercontent.com/edoardottt/Scripts/master/open-file.sh`
 
+Contributing
+------
+
 If you want to contribute with some useful scripts, just open an issue or submit a pull request.
 
-
-
-IF YOU LIKED IT DROP A :star:
+If you liked it drop a :star:
 ------
  
  https://www.edoardoottavianelli.it for contact me.
