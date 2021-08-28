@@ -8,6 +8,8 @@ foreach ($dir in $dirs)
 {
   $dirok = $dir | foreach { $_.Name }
   cd $dirok
+  echo $dirok
   git pull
   cd ..
+  echo "============="
 }
