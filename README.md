@@ -30,8 +30,5 @@ If you want to contribute with some useful scripts, just open an [issue](https:/
 
 If you liked it drop a :star:
 ------
- 
- https://www.edoardoottavianelli.it for contact me.
-        
-          
-                                                                       Edoardo Ottavianelli
+
+[www.edoardoottavianelli.it](https://www.edoardoottavianelli.it/) for contact me.
