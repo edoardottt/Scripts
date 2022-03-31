@@ -12,6 +12,7 @@ My useful scripts
 - [pull-all.bat](https://github.com/edoardottt/Scripts/blob/master/pull-all.bat) (Windows Command prompt)
     
     - Git pull on all subfolders.
+    - usage: `./pull-all.bat`
     - `wget https://raw.githubusercontent.com/edoardottt/Scripts/master/pull-all.bat`
 
 - [pull-all.ps1](https://github.com/edoardottt/Scripts/blob/master/pull-all.ps1) (Powershell)
