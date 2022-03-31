@@ -24,6 +24,7 @@ My useful scripts
 - [open-file.sh](https://github.com/edoardottt/Scripts/master/open-file.sh)
 
     - Open all files with the inputted extension
+    - usage: `./open-file.sh`
     - `wget https://raw.githubusercontent.com/edoardottt/Scripts/master/open-file.sh`
 
 Contributing
