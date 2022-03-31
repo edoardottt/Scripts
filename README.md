@@ -18,6 +18,7 @@ My useful scripts
 - [pull-all.ps1](https://github.com/edoardottt/Scripts/blob/master/pull-all.ps1) (Powershell)
     
     - Git pull on all subfolders.
+    - usage: `./pull-all.ps1`
     - `wget https://raw.githubusercontent.com/edoardottt/Scripts/master/pull-all.ps1`
 
 - [open-file.sh](https://github.com/edoardottt/Scripts/master/open-file.sh)
