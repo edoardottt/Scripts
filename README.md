@@ -6,6 +6,7 @@ My useful scripts
 - [pull-all.sh](https://github.com/edoardottt/Scripts/blob/master/pull-all.sh) (Linux shells)
     
     - Git pull on all subfolders.
+    - usage: `./pull-all.sh`
     - `wget https://raw.githubusercontent.com/edoardottt/Scripts/master/pull-all.sh`
 
 - [pull-all.bat](https://github.com/edoardottt/Scripts/blob/master/pull-all.bat) (Windows Command prompt)
