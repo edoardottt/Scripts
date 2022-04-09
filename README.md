@@ -35,4 +35,4 @@ If you want to contribute with some useful scripts, just open an [issue](https:/
 If you liked it drop a :star:
 ------
 
-[www.edoardoottavianelli.it](https://www.edoardoottavianelli.it/) to contact me.
+[edoardoottavianelli.it](https://www.edoardoottavianelli.it/) to contact me.
