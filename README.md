@@ -6,4 +6,4 @@ If you want to contribute with some useful scripts, just open an [issue](https:/
 
 -------
 
-[edoardoottavianelli.it](https://www.edoardoottavianelli.it/) to contact me.
+[edoardottt.com](https://edoardottt.com/) to contact me.
